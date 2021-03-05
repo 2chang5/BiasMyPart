@@ -2,17 +2,69 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity" >
 
-    <TextView
+    <Button
+        android:id="@+id/plusButton"
+        style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:background="@drawable/button_shape"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/jellyView"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="false"
+        app:lottie_fileName="boom_menu.json"
+        app:lottie_loop="false" />
+
+    <Button
+        android:id="@+id/button1"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="219dp"
+        android:layout_marginBottom="155dp"
+        android:background="@drawable/button_shape_forjelly"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/jellyView"
+        app:layout_constraintEnd_toEndOf="@+id/jellyView"
+        app:layout_constraintHorizontal_bias="0.977"
+        app:layout_constraintStart_toStartOf="@+id/jellyView"
+        app:layout_constraintTop_toTopOf="@+id/jellyView"
+        app:layout_constraintVertical_bias="0.077" />
+
+    <Button
+        android:id="@+id/button2"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="215dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="104dp"
+        android:background="@drawable/button_shape_forjelly"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/jellyView"
+        app:layout_constraintEnd_toEndOf="@+id/jellyView"
+        app:layout_constraintHorizontal_bias="0.034"
+        app:layout_constraintStart_toStartOf="@+id/jellyView"
+        app:layout_constraintTop_toTopOf="@+id/jellyView"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
