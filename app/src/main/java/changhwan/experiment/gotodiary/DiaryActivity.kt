@@ -9,10 +9,10 @@ class DiaryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_diary)
 
-        if (intent.hasExtra("emotion")){
-            val emotion = intent.getIntExtra("emotion",1).toString()
-            diaryText.text=emotion
-        }
+//        if (intent.hasExtra("emotion")){
+//            val emotion = intent.getIntExtra("emotion",1).toString()
+//            diaryText.text=emotion
+//        }
 
     }
 }
