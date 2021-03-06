@@ -2,16 +2,19 @@ package changhwan.experiment.gotodiary
 
 import android.animation.ValueAnimator
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import android.view.View.OnTouchListener
 import android.view.animation.DecelerateInterpolator
 import android.widget.FrameLayout
+import androidx.appcompat.app.AppCompatActivity
 import com.takusemba.spotlight.Spotlight
 import com.takusemba.spotlight.Target
 import com.takusemba.spotlight.shape.Circle
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.forspotlight.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -108,24 +111,46 @@ class MainActivity : AppCompatActivity() {
 
             spotlight.start()
 
+            //나머지 버튼가리기
+            first.findViewById<View>(R.id.goToTwo).visibility = View.GONE
+            first.findViewById<View>(R.id.goToThree).visibility = View.GONE
+            first.findViewById<View>(R.id.goToFour).visibility = View.GONE
+            first.findViewById<View>(R.id.goToFive).visibility = View.GONE
 
-            val closeSpotlight = View.OnClickListener { spotlight.finish() }
+
+            val closeSpotlight = View.OnClickListener {
+                //잠시 버튼 죽이기
+                first.findViewById<View>(R.id.goToOne).visibility = View.GONE
+                //레이아웃 터치 죽여야함 시발 개시발
+                first.findViewById<View>(R.id.background).visibility = View.GONE
+                //스포트라이트 끄기
+                spotlight.finish()
+                //잠시 시간거쳐 애니메이션 효과후 살리기,백그라운드도 살리기 백그라운드 아직 못살림
+                Handler().postDelayed({
+                    first.findViewById<View>(R.id.goToOne).visibility = View.VISIBLE
+                    first.findViewById<View>(R.id.background).visibility = View.VISIBLE
+                }, 1000)
+                //버튼 다시 살려내기
+                first.findViewById<View>(R.id.goToTwo).visibility = View.VISIBLE
+                first.findViewById<View>(R.id.goToThree).visibility = View.VISIBLE
+                first.findViewById<View>(R.id.goToFour).visibility = View.VISIBLE
+                first.findViewById<View>(R.id.goToFive).visibility = View.VISIBLE
+            }
 
             first.findViewById<View>(R.id.background).setOnClickListener(closeSpotlight)
 
             //다이어리로 넘어가기
             val goToDiary= View.OnClickListener { val intent = Intent(this, DiaryActivity::class.java)
+                intent.putExtra("emotion", 1)
                 startActivity(intent)
                 spotlight.finish()
             }
 
             first.findViewById<View>(R.id.goToOne).setOnClickListener(goToDiary)
-
         }
 
         //2번젤리
         jelly_button2.setOnClickListener {
-            //이파트 이해하고 싶다면 안드로이드 1강 섹션3 37강 부분을 참고하라
             val firstRoot = FrameLayout(this)
             val first = layoutInflater.inflate(R.layout.forspotlight, firstRoot)
             val firstTarget = Target.Builder()
@@ -143,13 +168,37 @@ class MainActivity : AppCompatActivity() {
 
             spotlight.start()
 
+            //나머지 버튼가리기
+            first.findViewById<View>(R.id.goToOne).visibility = View.GONE
+            first.findViewById<View>(R.id.goToThree).visibility = View.GONE
+            first.findViewById<View>(R.id.goToFour).visibility = View.GONE
+            first.findViewById<View>(R.id.goToFive).visibility = View.GONE
 
-            val closeSpotlight = View.OnClickListener { spotlight.finish() }
+
+            val closeSpotlight = View.OnClickListener {
+                //잠시 버튼 죽이기
+                first.findViewById<View>(R.id.goToTwo).visibility = View.GONE
+                //레이아웃 터치 죽여야함 시발 개시발
+                first.findViewById<View>(R.id.background).visibility = View.GONE
+                //스포트라이트 끄기
+                spotlight.finish()
+                //잠시 시간거쳐 애니메이션 효과후 살리기,백그라운드도 살리기 백그라운드 아직 못살림
+                Handler().postDelayed({
+                    first.findViewById<View>(R.id.goToTwo).visibility = View.VISIBLE
+                    first.findViewById<View>(R.id.background).visibility = View.VISIBLE
+                }, 1000)
+                //버튼 다시 살려내기
+                first.findViewById<View>(R.id.goToOne).visibility = View.VISIBLE
+                first.findViewById<View>(R.id.goToThree).visibility = View.VISIBLE
+                first.findViewById<View>(R.id.goToFour).visibility = View.VISIBLE
+                first.findViewById<View>(R.id.goToFive).visibility = View.VISIBLE
+            }
 
             first.findViewById<View>(R.id.background).setOnClickListener(closeSpotlight)
 
             //다이어리로 넘어가기
             val goToDiary= View.OnClickListener { val intent = Intent(this, DiaryActivity::class.java)
+                intent.putExtra("emotion", 2)
                 startActivity(intent)
                 spotlight.finish()
             }
@@ -160,7 +209,6 @@ class MainActivity : AppCompatActivity() {
 
         //3번젤리
         jelly_button3.setOnClickListener {
-            //이파트 이해하고 싶다면 안드로이드 1강 섹션3 37강 부분을 참고하라
             val firstRoot = FrameLayout(this)
             val first = layoutInflater.inflate(R.layout.forspotlight, firstRoot)
             val firstTarget = Target.Builder()
@@ -178,13 +226,36 @@ class MainActivity : AppCompatActivity() {
 
             spotlight.start()
 
+            //나머지 버튼가리기
+            first.findViewById<View>(R.id.goToOne).visibility = View.GONE
+            first.findViewById<View>(R.id.goToTwo).visibility = View.GONE
+            first.findViewById<View>(R.id.goToFour).visibility = View.GONE
+            first.findViewById<View>(R.id.goToFive).visibility = View.GONE
 
-            val closeSpotlight = View.OnClickListener { spotlight.finish() }
+            val closeSpotlight = View.OnClickListener {
+                //잠시 버튼 죽이기
+                first.findViewById<View>(R.id.goToThree).visibility = View.GONE
+                //레이아웃 터치 죽여야함 시발 개시발
+                first.findViewById<View>(R.id.background).visibility = View.GONE
+                //스포트라이트 끄기
+                spotlight.finish()
+                //잠시 시간거쳐 애니메이션 효과후 살리기,백그라운드도 살리기 백그라운드 아직 못살림
+                Handler().postDelayed({
+                    first.findViewById<View>(R.id.goToThree).visibility = View.VISIBLE
+                    first.findViewById<View>(R.id.background).visibility = View.VISIBLE
+                }, 1000)
+                //버튼 다시 살려내기
+                first.findViewById<View>(R.id.goToOne).visibility = View.VISIBLE
+                first.findViewById<View>(R.id.goToTwo).visibility = View.VISIBLE
+                first.findViewById<View>(R.id.goToFour).visibility = View.VISIBLE
+                first.findViewById<View>(R.id.goToFive).visibility = View.VISIBLE
+            }
 
             first.findViewById<View>(R.id.background).setOnClickListener(closeSpotlight)
 
             //다이어리로 넘어가기
             val goToDiary= View.OnClickListener { val intent = Intent(this, DiaryActivity::class.java)
+                intent.putExtra("emotion", 3)
                 startActivity(intent)
                 spotlight.finish()
             }
@@ -195,7 +266,6 @@ class MainActivity : AppCompatActivity() {
 
         //4번젤리
         jelly_button4.setOnClickListener {
-            //이파트 이해하고 싶다면 안드로이드 1강 섹션3 37강 부분을 참고하라
             val firstRoot = FrameLayout(this)
             val first = layoutInflater.inflate(R.layout.forspotlight, firstRoot)
             val firstTarget = Target.Builder()
@@ -213,13 +283,37 @@ class MainActivity : AppCompatActivity() {
 
             spotlight.start()
 
+            //나머지 버튼가리기
+            first.findViewById<View>(R.id.goToOne).visibility = View.GONE
+            first.findViewById<View>(R.id.goToTwo).visibility = View.GONE
+            first.findViewById<View>(R.id.goToThree).visibility = View.GONE
+            first.findViewById<View>(R.id.goToFive).visibility = View.GONE
 
-            val closeSpotlight = View.OnClickListener { spotlight.finish() }
+
+            val closeSpotlight = View.OnClickListener {
+                //잠시 버튼 죽이기
+                first.findViewById<View>(R.id.goToFour).visibility = View.GONE
+                //레이아웃 터치 죽여야함 시발 개시발
+                first.findViewById<View>(R.id.background).visibility = View.GONE
+                //스포트라이트 끄기
+                spotlight.finish()
+                //잠시 시간거쳐 애니메이션 효과후 살리기,백그라운드도 살리기 백그라운드 아직 못살림
+                Handler().postDelayed({
+                    first.findViewById<View>(R.id.goToFour).visibility = View.VISIBLE
+                    first.findViewById<View>(R.id.background).visibility = View.VISIBLE
+                }, 1000)
+                //버튼 다시 살려내기
+                first.findViewById<View>(R.id.goToOne).visibility = View.VISIBLE
+                first.findViewById<View>(R.id.goToTwo).visibility = View.VISIBLE
+                first.findViewById<View>(R.id.goToThree).visibility = View.VISIBLE
+                first.findViewById<View>(R.id.goToFive).visibility = View.VISIBLE
+            }
 
             first.findViewById<View>(R.id.background).setOnClickListener(closeSpotlight)
 
             //다이어리로 넘어가기
             val goToDiary= View.OnClickListener { val intent = Intent(this, DiaryActivity::class.java)
+                intent.putExtra("emotion", 4)
                 startActivity(intent)
                 spotlight.finish()
             }
@@ -230,7 +324,6 @@ class MainActivity : AppCompatActivity() {
 
         //5번젤리
         jelly_button5.setOnClickListener {
-            //이파트 이해하고 싶다면 안드로이드 1강 섹션3 37강 부분을 참고하라
             val firstRoot = FrameLayout(this)
             val first = layoutInflater.inflate(R.layout.forspotlight, firstRoot)
             val firstTarget = Target.Builder()
@@ -248,13 +341,34 @@ class MainActivity : AppCompatActivity() {
 
             spotlight.start()
 
+            //나머지 버튼가리기
+            first.findViewById<View>(R.id.goToOne).visibility = View.GONE
+            first.findViewById<View>(R.id.goToTwo).visibility = View.GONE
+            first.findViewById<View>(R.id.goToThree).visibility = View.GONE
+            first.findViewById<View>(R.id.goToFour).visibility = View.GONE
 
-            val closeSpotlight = View.OnClickListener { spotlight.finish() }
+            val closeSpotlight = View.OnClickListener { //잠시 버튼 죽이기
+                first.findViewById<View>(R.id.goToFive).visibility = View.GONE
+                //레이아웃 터치 죽여야함 시발 개시발
+                first.findViewById<View>(R.id.background).visibility = View.GONE
+                //스포트라이트 끄기
+                spotlight.finish()
+                //잠시 시간거쳐 애니메이션 효과후 살리기,백그라운드도 살리기 백그라운드 아직 못살림
+                Handler().postDelayed({
+                    first.findViewById<View>(R.id.goToFive).visibility = View.VISIBLE
+                    first.findViewById<View>(R.id.background).visibility = View.VISIBLE
+                }, 1000)
+                //버튼 다시 살려내기
+                first.findViewById<View>(R.id.goToOne).visibility = View.VISIBLE
+                first.findViewById<View>(R.id.goToTwo).visibility = View.VISIBLE
+                first.findViewById<View>(R.id.goToThree).visibility = View.VISIBLE
+                first.findViewById<View>(R.id.goToFour).visibility = View.VISIBLE }
 
             first.findViewById<View>(R.id.background).setOnClickListener(closeSpotlight)
 
             //다이어리로 넘어가기
             val goToDiary= View.OnClickListener { val intent = Intent(this, DiaryActivity::class.java)
+                intent.putExtra("emotion", 5)
                 startActivity(intent)
                 spotlight.finish()
             }
