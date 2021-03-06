@@ -1,11 +1,13 @@
 package changhwan.experiment.gotodiary
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
-import android.view.View.OnTouchListener
+import android.view.animation.Animation
 import android.view.animation.DecelerateInterpolator
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -36,6 +38,9 @@ class MainActivity : AppCompatActivity() {
         
         //plusbutton 설정
         plusButton.setOnClickListener {
+
+            jelly_exp.visibility = View.GONE
+
             if(plusState==false){
                 // Custom animation speed or duration.
                 val animator = ValueAnimator.ofFloat(1f, 0f).setDuration(2000)
@@ -125,7 +130,7 @@ class MainActivity : AppCompatActivity() {
                 first.findViewById<View>(R.id.background).visibility = View.GONE
                 //스포트라이트 끄기
                 spotlight.finish()
-                //잠시 시간거쳐 애니메이션 효과후 살리기,백그라운드도 살리기 백그라운드 아직 못살림
+                //잠시 시간거쳐 애니메이션 효과후 살리기,백그라운드도 살리기
                 Handler().postDelayed({
                     first.findViewById<View>(R.id.goToOne).visibility = View.VISIBLE
                     first.findViewById<View>(R.id.background).visibility = View.VISIBLE
@@ -182,7 +187,7 @@ class MainActivity : AppCompatActivity() {
                 first.findViewById<View>(R.id.background).visibility = View.GONE
                 //스포트라이트 끄기
                 spotlight.finish()
-                //잠시 시간거쳐 애니메이션 효과후 살리기,백그라운드도 살리기 백그라운드 아직 못살림
+                //잠시 시간거쳐 애니메이션 효과후 살리기,백그라운드도 살리기
                 Handler().postDelayed({
                     first.findViewById<View>(R.id.goToTwo).visibility = View.VISIBLE
                     first.findViewById<View>(R.id.background).visibility = View.VISIBLE
@@ -239,7 +244,7 @@ class MainActivity : AppCompatActivity() {
                 first.findViewById<View>(R.id.background).visibility = View.GONE
                 //스포트라이트 끄기
                 spotlight.finish()
-                //잠시 시간거쳐 애니메이션 효과후 살리기,백그라운드도 살리기 백그라운드 아직 못살림
+                //잠시 시간거쳐 애니메이션 효과후 살리기,백그라운드도 살리기
                 Handler().postDelayed({
                     first.findViewById<View>(R.id.goToThree).visibility = View.VISIBLE
                     first.findViewById<View>(R.id.background).visibility = View.VISIBLE
@@ -297,7 +302,7 @@ class MainActivity : AppCompatActivity() {
                 first.findViewById<View>(R.id.background).visibility = View.GONE
                 //스포트라이트 끄기
                 spotlight.finish()
-                //잠시 시간거쳐 애니메이션 효과후 살리기,백그라운드도 살리기 백그라운드 아직 못살림
+                //잠시 시간거쳐 애니메이션 효과후 살리기,백그라운드도 살리기
                 Handler().postDelayed({
                     first.findViewById<View>(R.id.goToFour).visibility = View.VISIBLE
                     first.findViewById<View>(R.id.background).visibility = View.VISIBLE
@@ -353,7 +358,7 @@ class MainActivity : AppCompatActivity() {
                 first.findViewById<View>(R.id.background).visibility = View.GONE
                 //스포트라이트 끄기
                 spotlight.finish()
-                //잠시 시간거쳐 애니메이션 효과후 살리기,백그라운드도 살리기 백그라운드 아직 못살림
+                //잠시 시간거쳐 애니메이션 효과후 살리기,백그라운드도 살리기
                 Handler().postDelayed({
                     first.findViewById<View>(R.id.goToFive).visibility = View.VISIBLE
                     first.findViewById<View>(R.id.background).visibility = View.VISIBLE

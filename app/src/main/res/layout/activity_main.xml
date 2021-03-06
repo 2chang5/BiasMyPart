@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity" >
+    android:textAlignment="center"
+    tools:context=".MainActivity">
 
     <RelativeLayout
         android:layout_width="400dp"
@@ -120,6 +121,24 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.453" />
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/jelly_exp"
+        android:layout_width="280dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="130dp"
+        android:background="@drawable/for_jelly_exp"
+        android:fontFamily="@font/binggraesamancobold"
+        android:gravity="center_horizontal|center_vertical"
+        android:includeFontPadding="false"
+        android:padding="20dp"
+        android:text="젤리들을 클릭해서 오늘의 젤리를 생성해주세요"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
