@@ -8,11 +8,30 @@
     android:padding="25dp"
     tools:context=".DiaryActivity">
 
-    <Button
-        android:id="@+id/xbutton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@drawable/forx" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/xButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/forx" />
+
+        <Space
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:text="젤리로티" />
+    </LinearLayout>
 
     <Space
         android:layout_width="match_parent"
@@ -23,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#F0F4D3"
-        android:padding="10dp">
+        android:padding="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,19 +50,29 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/diartDate"
+                android:id="@+id/diaryDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:fontFamily="@font/binggraesamancobold"
+                android:text="test text"
+                android:textSize="25dp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
 
             <EditText
                 android:id="@+id/mainText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="null"
+                android:background="@android:color/transparent"
                 android:ems="10"
+                android:fontFamily="@font/binggraesamancobold"
                 android:gravity="start|top"
-                android:inputType="textMultiLine" />
+                android:hint="  오늘의 일기를 작성해주세요"
+                android:inputType="textMultiLine"
+                android:textSize="35dp" />
+
         </LinearLayout>
     </ScrollView>
 

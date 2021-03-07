@@ -4,24 +4,29 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.DecelerateInterpolator
 import android.widget.FrameLayout
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.takusemba.spotlight.Spotlight
 import com.takusemba.spotlight.Target
 import com.takusemba.spotlight.shape.Circle
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.forspotlight.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 
 class MainActivity : AppCompatActivity() {
 
     var plusState : Boolean = false
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -94,6 +99,11 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        //인텐트시 날짜 넘겨주기 위해 받는거
+        val current = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd EE")
+        val formatted = current.format(formatter)
+
         //스포트라이트 파트
 
         //1번젤리
@@ -126,7 +136,7 @@ class MainActivity : AppCompatActivity() {
             val closeSpotlight = View.OnClickListener {
                 //잠시 버튼 죽이기
                 first.findViewById<View>(R.id.goToOne).visibility = View.GONE
-                //레이아웃 터치 죽여야함 시발 개시발
+                //레이아웃 터치 죽여야함
                 first.findViewById<View>(R.id.background).visibility = View.GONE
                 //스포트라이트 끄기
                 spotlight.finish()
@@ -146,6 +156,7 @@ class MainActivity : AppCompatActivity() {
 
             //다이어리로 넘어가기
             val goToDiary= View.OnClickListener { val intent = Intent(this, DiaryActivity::class.java)
+                intent.putExtra("nowDate",formatted)
                 intent.putExtra("emotion", 1)
                 startActivity(intent)
                 spotlight.finish()
@@ -183,7 +194,7 @@ class MainActivity : AppCompatActivity() {
             val closeSpotlight = View.OnClickListener {
                 //잠시 버튼 죽이기
                 first.findViewById<View>(R.id.goToTwo).visibility = View.GONE
-                //레이아웃 터치 죽여야함 시발 개시발
+                //레이아웃 터치 죽여야함
                 first.findViewById<View>(R.id.background).visibility = View.GONE
                 //스포트라이트 끄기
                 spotlight.finish()
@@ -203,6 +214,7 @@ class MainActivity : AppCompatActivity() {
 
             //다이어리로 넘어가기
             val goToDiary= View.OnClickListener { val intent = Intent(this, DiaryActivity::class.java)
+                intent.putExtra("nowDate",formatted)
                 intent.putExtra("emotion", 2)
                 startActivity(intent)
                 spotlight.finish()
@@ -240,7 +252,7 @@ class MainActivity : AppCompatActivity() {
             val closeSpotlight = View.OnClickListener {
                 //잠시 버튼 죽이기
                 first.findViewById<View>(R.id.goToThree).visibility = View.GONE
-                //레이아웃 터치 죽여야함 시발 개시발
+                //레이아웃 터치 죽여야함
                 first.findViewById<View>(R.id.background).visibility = View.GONE
                 //스포트라이트 끄기
                 spotlight.finish()
@@ -260,6 +272,7 @@ class MainActivity : AppCompatActivity() {
 
             //다이어리로 넘어가기
             val goToDiary= View.OnClickListener { val intent = Intent(this, DiaryActivity::class.java)
+                intent.putExtra("nowDate",formatted)
                 intent.putExtra("emotion", 3)
                 startActivity(intent)
                 spotlight.finish()
@@ -298,7 +311,7 @@ class MainActivity : AppCompatActivity() {
             val closeSpotlight = View.OnClickListener {
                 //잠시 버튼 죽이기
                 first.findViewById<View>(R.id.goToFour).visibility = View.GONE
-                //레이아웃 터치 죽여야함 시발 개시발
+                //레이아웃 터치 죽여야함
                 first.findViewById<View>(R.id.background).visibility = View.GONE
                 //스포트라이트 끄기
                 spotlight.finish()
@@ -318,6 +331,7 @@ class MainActivity : AppCompatActivity() {
 
             //다이어리로 넘어가기
             val goToDiary= View.OnClickListener { val intent = Intent(this, DiaryActivity::class.java)
+                intent.putExtra("nowDate",formatted)
                 intent.putExtra("emotion", 4)
                 startActivity(intent)
                 spotlight.finish()
@@ -354,7 +368,7 @@ class MainActivity : AppCompatActivity() {
 
             val closeSpotlight = View.OnClickListener { //잠시 버튼 죽이기
                 first.findViewById<View>(R.id.goToFive).visibility = View.GONE
-                //레이아웃 터치 죽여야함 시발 개시발
+                //레이아웃 터치 죽여야함
                 first.findViewById<View>(R.id.background).visibility = View.GONE
                 //스포트라이트 끄기
                 spotlight.finish()
@@ -373,6 +387,7 @@ class MainActivity : AppCompatActivity() {
 
             //다이어리로 넘어가기
             val goToDiary= View.OnClickListener { val intent = Intent(this, DiaryActivity::class.java)
+                intent.putExtra("nowDate",formatted)
                 intent.putExtra("emotion", 5)
                 startActivity(intent)
                 spotlight.finish()
