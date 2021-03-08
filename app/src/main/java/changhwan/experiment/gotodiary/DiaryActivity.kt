@@ -1,6 +1,8 @@
 package changhwan.experiment.gotodiary
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Color.parseColor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -19,10 +21,11 @@ class DiaryActivity : AppCompatActivity() {
 
         //날짜 표시
         if(intent.hasExtra("nowDate")){
-            val date = intent.getStringExtra("nowDate")
-            diaryDate.text = date
+            val nowDate = intent.getStringExtra("nowDate")
+            diaryDate.text = nowDate
         } else if (intent.hasExtra("lastDate")){
-
+            val lastDate = intent.getStringExtra("lastDate")
+            diaryDate.text = lastDate
         }
 
 
@@ -30,7 +33,32 @@ class DiaryActivity : AppCompatActivity() {
 
 
 
-//        if (intent.hasExtra("emotion")){
+        //배경 카드색깔 젤리에 맞추기
+        val emotion = intent.getIntExtra("emotion",1)
+        if(emotion == 1){
+            diaryScrollCard.setBackgroundResource(R.drawable.for_diary_card1)
+        }else if(emotion == 2){
+            diaryScrollCard.setBackgroundResource(R.drawable.for_diary_card2)
+        }else if(emotion == 3){
+            diaryScrollCard.setBackgroundResource(R.drawable.for_diary_card3)
+        }else if(emotion == 4){
+            diaryScrollCard.setBackgroundResource(R.drawable.for_diary_card4)
+        }else if(emotion == 5){
+            diaryScrollCard.setBackgroundResource(R.drawable.for_diary_card5)
+        }
+
+        //이미지 넣기
+
+
+        //텍스트 박스 포커스 조절
+
+
+        //일기 내용 파이어스토어에 쳐넣기
+
+
+        //일기작성완료
+
+//       if (intent.hasExtra("emotion")){
 //            val emotion = intent.getIntExtra("emotion",1).toString()
 //            diaryText.text=emotion
 //        }
