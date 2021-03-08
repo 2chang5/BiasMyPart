@@ -57,8 +57,15 @@ class DiaryActivity : AppCompatActivity() {
 
 
         //일기작성완료
+        saveButton.setOnClickListener{
+            //로티 재생
+            //이거 로티 재생후 넘어가자
+            val intent = Intent(this, FinishDiary::class.java)
+            startActivity(intent)
+        }
 
-//       if (intent.hasExtra("emotion")){
+
+    //       if (intent.hasExtra("emotion")){
 //            val emotion = intent.getIntExtra("emotion",1).toString()
 //            diaryText.text=emotion
 //        }
