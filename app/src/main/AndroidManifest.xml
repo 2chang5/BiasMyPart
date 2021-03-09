@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GoToDiary">
         <activity android:name=".FinishDiary"></activity>
-        <activity android:name=".DiaryActivity" />
+        <activity
+            android:name=".DiaryActivity"
+            android:windowSoftInputMode="adjustResize"
+            />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
