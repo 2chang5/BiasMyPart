@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coverlayout"
@@ -11,8 +11,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:padding="25dp">
 
@@ -114,23 +114,15 @@
             </LinearLayout>
         </ScrollView>
 
-        <Space
-            android:id="@+id/forKeyboardSpace"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:visibility="gone" />
-
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/keyBoardbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentBottom="true"
         android:background="@drawable/for_keyboard_bar"
         android:orientation="horizontal"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <Button
             android:id="@+id/button8"
@@ -165,4 +157,4 @@
             android:text="Button" />
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
