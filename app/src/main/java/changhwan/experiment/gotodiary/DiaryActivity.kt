@@ -16,28 +16,26 @@ import kotlinx.android.synthetic.main.activity_diary.*
 class DiaryActivity : AppCompatActivity() {
 
     var softKeyboard: SoftKeyboard? = null
-    var coverlayout: RelativeLayout? = null
+    var coverlayout: LinearLayout? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_diary)
 
         //키보드 바 설정용 키보드 올라가고 내려가는 이벤트처리
-        coverlayout = findViewById<View>(R.id.coverlayout) as RelativeLayout
+        coverlayout = findViewById<View>(R.id.coverlayout) as LinearLayout
         val controlManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         softKeyboard = SoftKeyboard(coverlayout, controlManager)
         softKeyboard!!.setSoftKeyboardCallback(object : SoftKeyboard.SoftKeyboardChanged {
             override fun onSoftKeyboardHide() {
                 Handler(Looper.getMainLooper()).post {
-                    keyBoardbar.visibility = View.INVISIBLE
-                    forKeyboardSpace.visibility = View.GONE
+                    keyBoardbar.setBackgroundResource(R.drawable.for_keyboard_bar_down)
                 }
             }
 
             override fun onSoftKeyboardShow() {
                 Handler(Looper.getMainLooper()).post {
-                    keyBoardbar.visibility = View.VISIBLE
-                    forKeyboardSpace.visibility = View.VISIBLE
+                    keyBoardbar.setBackgroundResource(R.drawable.for_keyboard_bar_up)
                 }
             }
         })
@@ -80,7 +78,10 @@ class DiaryActivity : AppCompatActivity() {
         //이미지 넣기
 
 
-        //텍스트 박스 포커스 조절
+        //연인에게 공개시간 설정
+
+
+        //텍스트 박스 포커스 조절(키보드바 라이브러리에서 자동처리되었음)
 
 
         //일기 내용 파이어스토어에 쳐넣기
