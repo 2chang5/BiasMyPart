@@ -89,22 +89,24 @@ class DiaryActivity : AppCompatActivity() {
 
         //이미지 넣기
         selectPic.setOnClickListener {
-            fun selectGallery() {
                 var writePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 var readPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
 
                 if (writePermission == PackageManager.PERMISSION_DENIED || readPermission == PackageManager.PERMISSION_DENIED) {
                     // 권한 없어서 요청
                     ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE), 0)
+                    //갤러리 켜기
+                    val intent = Intent(Intent.ACTION_PICK)
+                    intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
+
+                    startActivityForResult(Intent.createChooser(intent,"Load Picture"),0)
                 } else {
                     // 권한 있음
-                   val intent = Intent()
-                    intent.type = "image/*"
-                    intent.action = Intent.ACTION_GET_CONTENT
+                    val intent = Intent(Intent.ACTION_PICK)
+                    intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
 
                     startActivityForResult(Intent.createChooser(intent,"Load Picture"),0)
                 }
-            }
         }
 
 
