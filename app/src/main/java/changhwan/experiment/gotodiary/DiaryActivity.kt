@@ -100,12 +100,14 @@ class DiaryActivity : AppCompatActivity() {
                     intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
 
                     startActivityForResult(Intent.createChooser(intent,"Load Picture"),0)
+
                 } else {
                     // 권한 있음
                     val intent = Intent(Intent.ACTION_PICK)
                     intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
 
                     startActivityForResult(Intent.createChooser(intent,"Load Picture"),0)
+
                 }
         }
 
@@ -142,6 +144,7 @@ class DiaryActivity : AppCompatActivity() {
         softKeyboard!!.unRegisterSoftKeyboardCallback()
     }
 
+    //이미지 받아오기 관련
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -150,6 +153,10 @@ class DiaryActivity : AppCompatActivity() {
                 var dataUri = data?.data
                 try{
                     var bitmap : Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver,dataUri)
+                    if(bitmap != null){
+                        picture_view.visibility = View.VISIBLE
+                        picture_space.visibility = View.VISIBLE
+                    }
                     picture_view.setImageBitmap(bitmap)
                 }catch (e:Exception){
                     Toast.makeText(this,"$e",Toast.LENGTH_SHORT).show()

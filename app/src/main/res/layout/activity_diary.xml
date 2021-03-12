@@ -91,6 +91,7 @@
                         tools:srcCompat="null" />
 
                     <Space
+                        android:id="@+id/picture_space"
                         android:layout_width="10dp"
                         android:layout_height="wrap_content"
                         android:visibility="gone" />
