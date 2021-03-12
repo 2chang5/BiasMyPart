@@ -88,28 +88,7 @@ class DiaryActivity : AppCompatActivity() {
 
 
         //이미지 넣기
-        selectPic.setOnClickListener {
-                var writePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                var readPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
 
-                if (writePermission == PackageManager.PERMISSION_DENIED || readPermission == PackageManager.PERMISSION_DENIED) {
-                    // 권한 없어서 요청
-                    ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE), 0)
-                    //갤러리 켜기
-                    val intent = Intent(Intent.ACTION_PICK)
-                    intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
-
-                    startActivityForResult(Intent.createChooser(intent,"Load Picture"),0)
-
-                } else {
-                    // 권한 있음
-                    val intent = Intent(Intent.ACTION_PICK)
-                    intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
-
-                    startActivityForResult(Intent.createChooser(intent,"Load Picture"),0)
-
-                }
-        }
 
 
 
@@ -142,28 +121,5 @@ class DiaryActivity : AppCompatActivity() {
     public override fun onDestroy() {
         super.onDestroy()
         softKeyboard!!.unRegisterSoftKeyboardCallback()
-    }
-
-    //이미지 받아오기 관련
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if(requestCode == 0){
-            if(resultCode == RESULT_OK){
-                var dataUri = data?.data
-                try{
-                    var bitmap : Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver,dataUri)
-                    if(bitmap != null){
-                        picture_view.visibility = View.VISIBLE
-                        picture_space.visibility = View.VISIBLE
-                    }
-                    picture_view.setImageBitmap(bitmap)
-                }catch (e:Exception){
-                    Toast.makeText(this,"$e",Toast.LENGTH_SHORT).show()
-                }
-            }else{
-                //something wrong
-            }
-        }
     }
 }
