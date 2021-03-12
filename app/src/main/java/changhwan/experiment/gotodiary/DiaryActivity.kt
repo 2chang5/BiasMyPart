@@ -1,6 +1,7 @@
 package changhwan.experiment.gotodiary
 
 import android.Manifest
+import android.animation.ValueAnimator
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_diary.*
+import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.Exception
 
 
@@ -105,9 +107,16 @@ class DiaryActivity : AppCompatActivity() {
         //일기작성완료
         saveButton.setOnClickListener{
             //로티 재생
+            val animator = ValueAnimator.ofFloat(0f, 1f).setDuration(1300)
+            animator.addUpdateListener {
+                saveButton.setProgress(it.getAnimatedValue() as Float)
+            }
+            animator.start()
             //이거 로티 재생후 넘어가자
-            val intent = Intent(this, FinishDiary::class.java)
-            startActivity(intent)
+            Handler().postDelayed({
+                val intent = Intent(this, FinishDiary::class.java)
+                startActivity(intent)
+            }, 1300)
         }
 
 
